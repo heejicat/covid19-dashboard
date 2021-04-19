@@ -7,10 +7,10 @@ const path = require('path');
 
 require('dotenv').config();
 
-const middlewares = require('./middlewares');
-const data = require('./api/data');
-const rules = require('./api/rules');
-const getInfo = require('./api/getInfo');
+const middlewares = require('./src/middlewares');
+const data = require('./src/api/data');
+const rules = require('./src/api/rules');
+const getInfo = require('./src/api/getInfo');
 
 const app = express();
 
