@@ -1,0 +1,110 @@
+import React, { useState, useEffect, useCallback } from "react";
+import { ResponsiveLine } from "@nivo/line";
+
+import { covidData } from '../API';
+
+// make sure parent container have a defined height when using responsive component,
+// otherwise height will be 0 and no chart will be rendered.
+// website examples showcase many properties, you'll often use just a few of them.
+
+function NivoLine(newCase) {
+    const [lineData, setLineData] = useState();
+
+    useEffect(() => {
+        async function fetchMyAPI() {
+            let data = await covidData();
+            console.log(covidData);
+            
+            let result = data.map(({ date:x, new_cases:y}) => ({x, y}));
+            
+            let line = [({
+                "id" : "New Cases",
+                "color" : "hsl(279, 70%, 50%)",
+                "data" : result
+            })];
+            
+            setLineData(line);
+        };
+
+        fetchMyAPI();
+    }, []);
+
+
+    const exlineData = [({
+        "id" : "New Cases",
+        "color" : "hsl(279, 70%, 50%)",
+        "data" : [
+            {
+                x: "April 5, 2021",
+                y: 869
+            },
+            {
+                x: "April 6, 2021",
+                y: 1000
+            },
+        ]
+    })];
+    
+    return (
+        <div id="graph">
+            <ResponsiveLine
+                data={exlineData}
+                margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
+                xScale={{ type: 'point' }}
+                xFormat=" =-"
+                yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
+                yFormat=" >-.2f"
+                axisTop={null}
+                axisRight={null}
+                axisBottom={{
+                    orient: 'bottom',
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                }}
+                axisLeft={{
+                    orient: 'left',
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                }}
+                colors={{ scheme: 'blues' }}
+                pointSize={10}
+                pointColor={{ from: 'color' }}
+                pointBorderWidth={0}
+                pointBorderColor={{ from: 'serieColor' }}
+                pointLabelYOffset={-12}
+                useMesh={true}
+                legends={[
+                    {
+                        anchor: 'right',
+                        direction: 'column',
+                        justify: false,
+                        translateX: 100,
+                        translateY: 0,
+                        itemsSpacing: 0,
+                        itemDirection: 'left-to-right',
+                        itemWidth: 80,
+                        itemHeight: 20,
+                        itemOpacity: 0.75,
+                        symbolSize: 12,
+                        symbolShape: 'circle',
+                        symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                        effects: [
+                            {
+                                on: 'hover',
+                                style: {
+                                    itemBackground: 'rgba(0, 0, 0, .03)',
+                                    itemOpacity: 1
+                                }
+                            }
+                        ]
+                    }
+                ]}
+            />
+        </div>
+    );
+}
+
+
+export default NivoLine;

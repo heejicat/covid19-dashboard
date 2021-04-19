@@ -1,0 +1,71 @@
+body {
+  margin: 50px;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #3369b5;
+  color: white;
+}
+
+#staySafe {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #dec01f;
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 3px rgb(77, 77, 76);
+}
+
+#subTitle {
+  text-align: center;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+button , #data-tabl, .rwt_tab {
+  color: white;
+}
+
+.cardOut {
+  display: flex;
+  padding-top: 15px;
+}
+
+.card {
+  height: 170px;
+  width: 290px;
+  background: #6ba5d5;
+  border-radius: 5px;
+}
+
+.card > h3 {
+  padding: 20px 20px 20px;
+  background-color: #679eca;
+  margin: 0;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.card > hr {
+  margin: 0;
+  border-style: solid;
+  background-color: #6092bb;
+  color: #6092bb;
+}
+
+.card > p {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 30px auto;
+}
+
+.left {
+  margin-left: 20px;
+}
+
+#graph {
+  background-color: #6ba5d5;
+  height: 23em; 
+  width: 60em; 
+  display: flex;
+  border-radius: 5px;
+}
