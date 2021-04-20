@@ -17,7 +17,8 @@ const app = express();
 mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/covid-19-dashboard', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}); 
+},
+() => console.log("\x1b[35m", "Database is connected....")); 
 
 app.use(morgan('common'));
 app.use(helmet());
