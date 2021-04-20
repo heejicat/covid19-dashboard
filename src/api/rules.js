@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-schedule.scheduleJob('0 17 * * *', async () => {
+schedule.scheduleJob('0 17 * * *', async (req, res) => {
     const ruleEntry = new RuleEntry(await getInfo.getRegulation());
     const newUpdateDate = ruleEntry.date;
     
@@ -36,6 +36,7 @@ schedule.scheduleJob('0 17 * * *', async () => {
     } else {
         const newEntry = await ruleEntry.save();
     }
+    console.log(res.socket.destoryed);
     
 });
 

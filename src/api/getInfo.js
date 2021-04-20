@@ -41,7 +41,7 @@ async function getRegulation() {
         restriction : restriction,
         date : dateSelector,
     };
-
+    
     return regulation;
 }    
 
