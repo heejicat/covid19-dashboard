@@ -1,4 +1,4 @@
-const API_URL = process.env.API_URL;
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3001' : 'https://merncovid19dashboard.herokuapp.com'
 
 export async function covidData() {
     console.log(API_URL);
