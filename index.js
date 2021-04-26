@@ -29,6 +29,10 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
+app.use(helmet({
+    contentSecurityPolicy: false,
+  }));
+
 app.get('/', (req,res) => {
     res.header("Access-Control-Allow-Origin", "*");
 });
