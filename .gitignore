@@ -1,5 +1,9 @@
 build/*
 !build/build.xml
+build
+/build
+/build/
+
 /node_modules
 npm-debug-log
 /*.env
