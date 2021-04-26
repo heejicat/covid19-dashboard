@@ -9,6 +9,7 @@ const router = Router();
 router.get('/', async (req, res, next) => {
     try {
         const entries = await DataEntry.find().sort({date:-1});
+        console.log("entries = " + entries);
         res.json(entries);
     } catch (error) {
         next(error);
