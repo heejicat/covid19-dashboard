@@ -32,7 +32,9 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(helmet.contentSecurityPolicy({
     directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["'self'"],
+        "default-src": ["'self'"],
+        "script-src": ["'self'", "example.com"],
+        "object-src": ["'none'"],
         // defaultSrc: ["'self'"],
         // scriptSrc: ["'self'"],
         // styleSrc: ["'self'"],
