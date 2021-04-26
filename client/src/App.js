@@ -5,7 +5,6 @@ import 'react-web-tabs/dist/react-web-tabs.css';
 
 import { covidData } from './API';
 import { covidRule } from './API';
-import NivoLine from "./component/NivoLine";
 
 function App() {
 
@@ -50,22 +49,18 @@ function App() {
           <Tab tabFor="rule">Restriction</Tab>
         </TabList>
         <TabPanel tabId="data">
-        <div className="cardOut">
-          <div className="card">
-            <h3>Last Update</h3>
-            <hr />
-            <p>{todayDate}</p> 
+          <div className="cardOut">
+            <div className="card">
+              <h3>Last Update</h3>
+              <hr />
+              <p>{todayDate}</p> 
+            </div>
+            <div className="card left">
+              <h3>Today's New Cases</h3>
+              <hr />
+              <p> {newCase}</p>
+            </div>
           </div>
-          <div className="card left">
-            <h3>Today's New Cases</h3>
-            <hr />
-            <p> {newCase}</p>
-          </div>
-          </div>
-          <br />
-          <NivoLine 
-            newCase = {newCase}
-          />
         </TabPanel>
         <TabPanel tabId="rule">
         </TabPanel>
