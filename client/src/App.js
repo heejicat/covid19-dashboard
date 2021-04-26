@@ -16,6 +16,8 @@ function App() {
     (async () => {
       const data = await covidData();
       const rule = await covidRule();
+
+      console.log(data);
       
       // get new case for today
       const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };

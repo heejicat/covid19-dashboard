@@ -20,11 +20,6 @@ async function getCovidData() {
         date: today.toLocaleDateString("en-US", dateFormat)
     }
     
-    delete process.env['http_proxy'];
-    delete process.env['HTTP_PROXY'];
-    delete process.env['https_proxy'];
-    delete process.env['HTTPS_PROXY'];
-    
     return covidData;
 }
 
@@ -47,12 +42,8 @@ async function getRegulation() {
         restriction : restriction,
         date : dateSelector,
     };
-    
-    delete process.env['http_proxy'];
-    delete process.env['HTTP_PROXY'];
-    delete process.env['https_proxy'];
-    delete process.env['HTTPS_PROXY'];
-    
+
+
     return regulation;
 }    
 
