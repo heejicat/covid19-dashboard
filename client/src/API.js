@@ -1,4 +1,4 @@
-const API_URL = 'https://merncovid19dashboard.herokuapp.com/';
+const API_URL = process.env.API_URL;
 
 export async function covidData() {
     const response = await fetch(`${API_URL}/api/data`);
