@@ -24,7 +24,7 @@ function App() {
     setTodayDate(date);
   }
 
-  const getrules = async () => {
+  const getRules = async () => {
     const rule = await covidRule();
 
     // get new rule
@@ -40,7 +40,7 @@ function App() {
 
   useEffect(() => {
     getDatas();
-    getrules();
+    getRules();
   }, []);
 
   return (
