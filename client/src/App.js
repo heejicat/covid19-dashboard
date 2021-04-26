@@ -12,33 +12,35 @@ function App() {
   const [todayDate, setTodayDate] = useState();
   const [newRule, setNewRule] = useState();
 
+  const getDatas = async () => {
+    const data = await covidData();
+
+    // get new case for today
+    const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
+    const date = new Date(data[0].date).toLocaleDateString("en-US", dateFormat);
+    const todayCase = data[0].new_cases;
+    
+    setNewCase(todayCase);
+    setTodayDate(date);
+  }
+
+  const getrules = async () => {
+    const rule = await covidRule();
+
+    // get new rule
+    const newReg = rule[0].restriction;
+
+    setNewRule(newReg);
+
+    const ruleTab = document.getElementById("rule");
+    const ruleDiv = document.createElement("div");
+    ruleTab.appendChild(ruleDiv);
+    ruleDiv.innerHTML = newReg;
+  }
+
   useEffect(() => {
-    (async () => {
-      const data = await covidData();
-      const rule = await covidRule();
-
-      console.log(data);
-      
-      // get new case for today
-      const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-      const date = new Date(data[0].date).toLocaleDateString("en-US", dateFormat);
-      const todayCase = data[0].new_cases;
-      
-      // get new rule
-      const newReg = rule[0].restriction;
-
-      setNewCase(todayCase);
-      setTodayDate(date);
-      setNewRule(newReg);
-
-      const ruleTab = document.getElementById("rule");
-      const ruleDiv = document.createElement("div");
-      ruleTab.appendChild(ruleDiv);
-      ruleDiv.innerHTML = newReg;
-
-      console.log(todayCase);
-
-    })();
+    getDatas();
+    getrules();
   }, []);
 
   return (
