@@ -1,6 +1,5 @@
 const express = require('express');
 const morgan = require('morgan');
-const helmet = require('helmet');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -21,17 +20,12 @@ mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/covid-19-dashb
 () => console.log("\x1b[35m", "Database is connected....")); 
 
 app.use(morgan('common'));
-app.use(helmet());
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
 }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
-
-app.use(helmet({
-    contentSecurityPolicy: false,
-}));
 
 app.get('/', (req,res) => {
     res.header("Access-Control-Allow-Origin", "*");
