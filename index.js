@@ -29,18 +29,9 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use((req, res, next) => {
-    res.locals.cspNonce = crypto.randomBytes(16).toString("hex");
-    next();
-  });
-  app.use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", (req, res) => `'nonce-${res.locals.cspNonce}'`],
-      },
-    })
-  );
+app.get('/', (req,res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+});
 
 app.get('/', (req, res) => {
     // res.json({

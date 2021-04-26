@@ -34,6 +34,8 @@ function App() {
       ruleTab.appendChild(ruleDiv);
       ruleDiv.innerHTML = newReg;
 
+      console.log(todayCase);
+
     })();
   }, []);
 
