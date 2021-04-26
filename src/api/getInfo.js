@@ -6,11 +6,6 @@ const page_restriction = 'https://www2.gov.bc.ca/gov/content/covid-19/info/restr
 
 
 async function getCovidData() {
-    delete process.env['http_proxy'];
-    delete process.env['HTTP_PROXY'];
-    delete process.env['https_proxy'];
-    delete process.env['HTTPS_PROXY'];
-
     // Request HTTP as JSON
     const { data } = await axios.get(page_case);
     // New cases number selector
@@ -25,15 +20,16 @@ async function getCovidData() {
         date: today.toLocaleDateString("en-US", dateFormat)
     }
     
-    return covidData;
-}
-
-async function getRegulation() {
     delete process.env['http_proxy'];
     delete process.env['HTTP_PROXY'];
     delete process.env['https_proxy'];
     delete process.env['HTTPS_PROXY'];
     
+    return covidData;
+}
+
+async function getRegulation() {
+
     // Request HTTP as JSON
     const { data } = await axios.get(page_restriction);
     // Define $ to use data like jQuery
@@ -51,6 +47,11 @@ async function getRegulation() {
         restriction : restriction,
         date : dateSelector,
     };
+    
+    delete process.env['http_proxy'];
+    delete process.env['HTTP_PROXY'];
+    delete process.env['https_proxy'];
+    delete process.env['HTTPS_PROXY'];
     
     return regulation;
 }    
