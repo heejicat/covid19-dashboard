@@ -33,10 +33,12 @@ schedule.scheduleJob('0 17 * * *', async (req, res) => {
             });
         }
 
+
     } else {
         const newEntry = await ruleEntry.save();
     }
     
+    res.json();
     
 });
 
