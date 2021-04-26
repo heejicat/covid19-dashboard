@@ -29,18 +29,21 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-    );
-    if(req.method === "OPTIONS") {
-        res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-        return res.status(200).json({});
-    }
-    next();
-})
+app.use(helmet.csp({
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'"],
+    styleSrc: ["'self'"],
+    imgSrc: ["'self'"],
+    connectSrc: ["'self'"],
+    fontSrc: ["'self'"],
+    objectSrc: ["'none'"],
+    mediaSrc: ["'self'"],
+    frameSrc: ["'none'"],
+    // reportUri: '/report-violation',
+    reportOnly: false, // set to true if you only want to report errors
+    setAllHeaders: false, // set to true if you want to set all headers
+    safari5: false // set to true if you want to force buggy CSP in Safari 5
+}));
 
 app.get('/', (req, res) => {
     // res.json({
