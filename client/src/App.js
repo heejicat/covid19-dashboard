@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 
 import 'react-web-tabs/dist/react-web-tabs.css';
@@ -39,8 +40,34 @@ function App() {
   }
 
   useEffect(() => {
-    getDatas();
-    getRules();
+    axios
+      .get('/api/data')
+      .then((data) => {
+        // get new case for today
+        const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(data[0].date).toLocaleDateString("en-US", dateFormat);
+        const todayCase = data[0].new_cases;
+        
+        setNewCase(todayCase);
+        setTodayDate(date);
+      })
+      .catch( err => console.log(err));
+    axios
+      .get('/api/rules')
+      .then( (rules) => {
+        // get new rule
+        const newReg = rule[0].restriction;
+
+        setNewRule(newReg);
+
+        const ruleTab = document.getElementById("rule");
+        const ruleDiv = document.createElement("div");
+        ruleTab.appendChild(ruleDiv);
+        ruleDiv.innerHTML = newReg;
+      })
+      .catch( err => console.log(err));
+    // getDatas();
+    // getRules();
   }, []);
 
   return (
