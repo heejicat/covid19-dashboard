@@ -16,14 +16,9 @@ const app = express();
 mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/covid-19-dashboard', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}, err => { 
-        if (err) { 
-            console.error('database err', err); 
-        } else {
-            console.log("\x1b[35m", "Database is connected....")
-        }
-    }
-); 
+})
+.then(() => console.log("\x1b[35m", "Database is connected...."))
+.catch( err => console.error('database err', err)); 
 
 app.use(morgan('common'));
 app.use(cors({
