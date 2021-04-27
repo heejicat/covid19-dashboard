@@ -20,7 +20,7 @@ schedule.scheduleJob('0 17 * * *', async (req, res) => {
     const dataEntry = new DataEntry(await getInfo.getCovidData());
     const createdEntry = await dataEntry.save();
 
-    res.json();
+    res.json(createdEntry);
 });
    
 
