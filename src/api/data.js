@@ -16,12 +16,12 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-schedule.scheduleJob('0 17 * * *', async (req, res) => {
-    const dataEntry = new DataEntry(await getInfo.getCovidData());
-    const createdEntry = await dataEntry.save();
+// schedule.scheduleJob('0 17 * * *', async (req, res) => {
+//     const dataEntry = new DataEntry(await getInfo.getCovidData());
+//     const createdEntry = await dataEntry.save();
 
-    res.json(createdEntry);
-});
+//     res.json(createdEntry);
+// });
    
 
 module.exports = router;
