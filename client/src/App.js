@@ -54,7 +54,7 @@ function App() {
       .catch( err => console.log(err));
     axios
       .get('/api/rules')
-      .then( (rules) => {
+      .then( (rule) => {
         // get new rule
         const newReg = rule[0].restriction;
 
