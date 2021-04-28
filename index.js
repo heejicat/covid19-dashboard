@@ -46,7 +46,7 @@ app.use('/api/rules', rules);
 // });
 
 
-getInfo.getRegulation();
+// getInfo.getRegulation();
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
