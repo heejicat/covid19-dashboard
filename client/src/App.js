@@ -20,12 +20,13 @@ function App() {
     axios
       .get('/api/data')
       .then((data) => {
-        console.log(data.data[0]);
-
+        
         // get new case for today
         const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
-        const todayCase = data[0].new_cases;
+        const todayCase = data.data[0].new_cases;
+        console.log(date);
+        console.log(data.data[0].new_cases);
         
         setNewCase(todayCase);
         setTodayDate(date);
