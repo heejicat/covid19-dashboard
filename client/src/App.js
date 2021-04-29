@@ -40,13 +40,15 @@ function App() {
         // const ruleDiv = document.createElement("div");
         // ruleTab.appendChild(ruleDiv);
         // ruleDiv.innerHTML = newReg;
+        // setNewRule(newReg);
 
-        return newReg;
+        return {__html: newReg};
       })
       .catch( err => console.log(err));
 
   useEffect(() => {
     getDatas();
+    getRules();
   }, []);
 
   return (
@@ -75,7 +77,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <getRules />
+          <div dangerouslySetInnerHTML={getRules()} />
         </TabPanel>
       </Tabs>
     </div>
