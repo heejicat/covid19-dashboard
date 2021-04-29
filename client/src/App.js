@@ -89,12 +89,12 @@ function App() {
             <div className="card">
               <h3>Last Update</h3>
               <hr />
-              {/* <p>{todayDate}</p>  */}
+              <p>{todayDate}</p> 
             </div>
             <div className="card left">
               <h3>Today's New Cases</h3>
               <hr />
-              {/* <p> {newCase}</p> */}
+              <p> {newCase}</p>
             </div>
           </div>
         </TabPanel>
