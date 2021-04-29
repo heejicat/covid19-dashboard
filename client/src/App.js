@@ -45,11 +45,12 @@ function App() {
         return {__html: newReg};
       })
       .catch( err => console.log(err));
+    }
 
-  useEffect(() => {
-    getDatas();
-    getRules();
-  }, []);
+    useEffect(() => {
+      getDatas();
+      getRules();
+    }, []);
 
   return (
     <div className="App">
