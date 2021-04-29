@@ -1,4 +1,3 @@
-require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -29,9 +28,14 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/', (req,res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-});
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+};
+
+app.use(allowCrossDomain);
 
 app.get('/', (req, res) => {
     // res.json({
@@ -40,8 +44,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.use('/api/data', data);
-app.use('/api/rules', rules);
+// app.use('/api/data', data);
+// app.use('/api/rules', rules);
 
 // app.get('/*', (req, res) => {
 // });
