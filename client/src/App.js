@@ -13,10 +13,7 @@ function App() {
   const [todayDate, setTodayDate] = useState();
   const [newRule, setNewRule] = useState();
 
-
-
   const getDatas = async () => {
-
     axios
       .get('/api/data')
       .then((data) => {
@@ -25,55 +22,30 @@ function App() {
         const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
         const todayCase = data.data[0].new_cases;
-        console.log(date);
-        console.log(data.data[0].new_cases);
         
         setNewCase(todayCase);
         setTodayDate(date);
       })
     .catch( err => console.log(err));
-    // const data = await covidData();
-
-    // // get new case for today
-    // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-    // const date = new Date(data[0].date).toLocaleDateString("en-US", dateFormat);
-    // const todayCase = data[0].new_cases;
-    
-    // setNewCase(todayCase);
-    // setTodayDate(date);
   }
 
   const getRules = async () => {
     axios
       .get('/api/rules')
       .then( (rule) => {
-        console.log(rule.data);
         // get new rule
         const newReg = rule.data[0].restriction;
 
-        setNewRule(newReg);
+        // const ruleTab = document.getElementById("rule");
+        // const ruleDiv = document.createElement("div");
+        // ruleTab.appendChild(ruleDiv);
+        // ruleDiv.innerHTML = newReg;
 
-        const ruleTab = document.getElementById("rule");
-        const ruleDiv = document.createElement("div");
-        ruleTab.appendChild(ruleDiv);
-        ruleDiv.innerHTML = newReg;
+        return newReg;
       })
       .catch( err => console.log(err));
 
-    // const rule = await covidRule();
-    // // get new rule
-    // const newReg = rule[0].restriction;
-
-    // setNewRule(newReg);
-
-    // const ruleTab = document.getElementById("rule");
-    // const ruleDiv = document.createElement("div");
-    // ruleTab.appendChild(ruleDiv);
-    // ruleDiv.innerHTML = newReg;
-  }
-
   useEffect(() => {
-      
     getDatas();
     getRules();
   }, []);
@@ -104,6 +76,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
+          <getRules />
         </TabPanel>
       </Tabs>
     </div>
