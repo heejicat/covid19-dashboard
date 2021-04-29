@@ -44,11 +44,11 @@ function App() {
     axios
       .get('/api/data')
       .then((data) => {
-        console.log(data);
+        console.log(data.data);
 
         // get new case for today
         const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-        const date = new Date(data[0].date).toLocaleDateString("en-US", dateFormat);
+        const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
         const todayCase = data[0].new_cases;
         
         setNewCase(todayCase);
@@ -58,9 +58,9 @@ function App() {
     axios
       .get('/api/rules')
       .then( (rule) => {
-        console.log(rule);
+        console.log(rule.data);
         // get new rule
-        const newReg = rule[0].restriction;
+        const newReg = rule.data[0].restriction;
 
         setNewRule(newReg);
 
