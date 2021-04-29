@@ -45,12 +45,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-// app.use('/api/data', data);
-// app.use('/api/rules', rules);
-
-// app.get('/*', (req, res) => {
-// });
-
+app.use('/api/data', data);
+app.use('/api/rules', rules);
 
 // getInfo.getRegulation();
 
