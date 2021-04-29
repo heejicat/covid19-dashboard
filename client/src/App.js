@@ -42,7 +42,7 @@ function App() {
         // ruleDiv.innerHTML = newReg;
         // setNewRule(newReg);
 
-        return {__html: newReg};
+        return newReg;
       })
       .catch( err => console.log(err));
     }
@@ -78,7 +78,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div dangerouslySetInnerHTML={getRules()} />
+          <getRules />
         </TabPanel>
       </Tabs>
     </div>
