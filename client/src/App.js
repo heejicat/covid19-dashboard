@@ -47,7 +47,6 @@ function App() {
 
   useEffect(() => {
     getDatas();
-    getRules();
   }, []);
 
   return (
