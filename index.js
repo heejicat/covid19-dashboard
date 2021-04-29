@@ -41,6 +41,7 @@ app.get('/', (req, res) => {
     // res.json({
     //     message: 'Hello World!',
     // });
+    console.log(__dirname);
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
