@@ -16,60 +16,62 @@ function App() {
 
 
   const getDatas = async () => {
-    const data = await covidData();
 
-    // get new case for today
-    const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-    const date = new Date(data[0].date).toLocaleDateString("en-US", dateFormat);
-    const todayCase = data[0].new_cases;
+    axios
+      .get('/api/data')
+      .then((data) => {
+        console.log(data.data[0]);
+
+        // get new case for today
+        const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
+        const todayCase = data[0].new_cases;
+        
+        setNewCase(todayCase);
+        setTodayDate(date);
+      })
+    .catch( err => console.log(err));
+    // const data = await covidData();
+
+    // // get new case for today
+    // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
+    // const date = new Date(data[0].date).toLocaleDateString("en-US", dateFormat);
+    // const todayCase = data[0].new_cases;
     
-    setNewCase(todayCase);
-    setTodayDate(date);
+    // setNewCase(todayCase);
+    // setTodayDate(date);
   }
 
   const getRules = async () => {
-    const rule = await covidRule();
-    // get new rule
-    const newReg = rule[0].restriction;
+    axios
+      .get('/api/rules')
+      .then( (rule) => {
+        console.log(rule.data);
+        // get new rule
+        const newReg = rule.data[0].restriction;
 
-    setNewRule(newReg);
+        setNewRule(newReg);
 
-    const ruleTab = document.getElementById("rule");
-    const ruleDiv = document.createElement("div");
-    ruleTab.appendChild(ruleDiv);
-    ruleDiv.innerHTML = newReg;
+        const ruleTab = document.getElementById("rule");
+        const ruleDiv = document.createElement("div");
+        ruleTab.appendChild(ruleDiv);
+        ruleDiv.innerHTML = newReg;
+      })
+      .catch( err => console.log(err));
+
+    // const rule = await covidRule();
+    // // get new rule
+    // const newReg = rule[0].restriction;
+
+    // setNewRule(newReg);
+
+    // const ruleTab = document.getElementById("rule");
+    // const ruleDiv = document.createElement("div");
+    // ruleTab.appendChild(ruleDiv);
+    // ruleDiv.innerHTML = newReg;
   }
 
   useEffect(() => {
-    // axios
-    //   .get('/api/data')
-    //   .then((data) => {
-    //     console.log(data.data);
-
-    //     // get new case for today
-    //     const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-    //     const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
-    //     const todayCase = data[0].new_cases;
-        
-    //     setNewCase(todayCase);
-    //     setTodayDate(date);
-    //   })
-    //   .catch( err => console.log(err));
-    // axios
-    //   .get('/api/rules')
-    //   .then( (rule) => {
-    //     console.log(rule.data);
-    //     // get new rule
-    //     const newReg = rule.data[0].restriction;
-
-    //     setNewRule(newReg);
-
-    //     const ruleTab = document.getElementById("rule");
-    //     const ruleDiv = document.createElement("div");
-    //     ruleTab.appendChild(ruleDiv);
-    //     ruleDiv.innerHTML = newReg;
-    //   })
-    //   .catch( err => console.log(err));
       
     getDatas();
     getRules();
