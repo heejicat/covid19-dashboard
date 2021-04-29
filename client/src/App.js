@@ -18,7 +18,6 @@ function App() {
   const getDatas = async () => {
     const data = await covidData();
 
-    console.log(data);
     // get new case for today
     const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
     const date = new Date(data[0].date).toLocaleDateString("en-US", dateFormat);
@@ -30,7 +29,6 @@ function App() {
 
   const getRules = async () => {
     const rule = await covidRule();
-console.log(rule);
     // get new rule
     const newReg = rule[0].restriction;
 
@@ -46,6 +44,8 @@ console.log(rule);
     axios
       .get('/api/data')
       .then((data) => {
+        console.log(data);
+
         // get new case for today
         const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(data[0].date).toLocaleDateString("en-US", dateFormat);
@@ -58,6 +58,7 @@ console.log(rule);
     axios
       .get('/api/rules')
       .then( (rule) => {
+        console.log(rule);
         // get new rule
         const newReg = rule[0].restriction;
 
