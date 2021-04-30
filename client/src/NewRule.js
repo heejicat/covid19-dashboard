@@ -20,7 +20,7 @@ function NewRule(_, ref) {
                 </section>
             )
 
-            console.log(newRule);
+            console.log(newReg);
 
             return newRule;
         })

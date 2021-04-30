@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
-
 import 'react-web-tabs/dist/react-web-tabs.css';
 
 import NewRule from "./NewRule";
