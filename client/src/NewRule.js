@@ -2,29 +2,32 @@ import React from "react";
 import axios from 'axios';
 
 function NewRule(_, ref) {
-    axios
-        .get('/api/rules')
-        .then( (rule) => {
-            // get new rule
-            const newReg = rule.data[0].restriction;
 
-            // const ruleTab = document.getElementById("rule");
-            // const ruleDiv = document.createElement("div");
-            // ruleTab.appendChild(ruleDiv);
-            // ruleDiv.innerHTML = newReg;
-            // setNewRule(newReg);
+    const getRule = async () => {
+        axios
+            .get('/api/rules')
+            .then( (rule) => {
+                // get new rule
+                const newRegHTML = rule.data[0].restriction;
 
-            const newRule = (
-                <section ref={ref}>
-                    {newReg}
-                </section>
-            )
+                // const ruleTab = document.getElementById("rule");
+                // const ruleDiv = document.createElement("div");
+                // ruleTab.appendChild(ruleDiv);
+                // ruleDiv.innerHTML = newReg;
+                // setNewRule(newReg);
 
-            console.log(newReg);
+                return newRegHTML;
+            })
+            .catch( err => console.log(err)); 
+    };
 
-            return newRule;
-        })
-        .catch( err => console.log(err)); 
+    console.log(getRule());
+
+    return (
+        <section ref={ref}>
+            {getRule()}
+        </section>
+    )
 }
 
 export default React.forwardRef(NewRule);

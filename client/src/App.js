@@ -45,13 +45,13 @@ function App() {
   //       return newReg;
   //     })
   //     .catch( err => console.log(err));
-  //   }
+  // }
 
-    useEffect(() => {
-      getDatas();
-      setNewRule(node.current.innerHTML);
-      //getRules();
-    }, []);
+  useEffect(() => {
+    getDatas();
+    setNewRule(node.current.innerHTML);
+    //getRules();
+  }, []);
 
   return (
     <div className="App">
