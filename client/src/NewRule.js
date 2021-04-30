@@ -4,7 +4,7 @@ import axios from 'axios';
 function NewRule(_, ref) {
 
     const getRule = async () => {
-        axios
+        await axios
             .get('/api/rules')
             .then( (rule) => {
                 // get new rule

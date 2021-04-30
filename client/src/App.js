@@ -14,7 +14,7 @@ function App() {
   const newRule = <NewRule ref={node} />;
 
   const getDatas = async () => {
-    axios
+    await axios
       .get('/api/data')
       .then((data) => {
         
@@ -26,7 +26,7 @@ function App() {
         setNewCase(todayCase);
         setTodayDate(date);
       })
-    .catch( err => console.log(err));
+      .catch( err => console.log(err));
   }
 
   // const getRules = async () => {

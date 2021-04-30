@@ -9,7 +9,6 @@ const router = Router();
 router.get('/', async (req, res, next) => {
     try {
         const entries = await RuleEntry.find();
-        console.log(entries[0].date);
         res.json(entries);
     } catch (error) {
         next(error);
