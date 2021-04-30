@@ -4,14 +4,15 @@ import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 
 import 'react-web-tabs/dist/react-web-tabs.css';
 
-import { covidData } from './API';
-import { covidRule } from './API';
+import NewRule from "./NewRule";
 
 function App() {
+  const node = React.createRef();
 
   const [newCase, setNewCase] = useState();
   const [todayDate, setTodayDate] = useState();
-  const [newRule, setNewRule] = useState();
+  const [html, setNewRule] = useState();
+  const newRule = <NewRule ref={node} />;
 
   const getDatas = async () => {
     axios
@@ -29,27 +30,28 @@ function App() {
     .catch( err => console.log(err));
   }
 
-  const getRules = async () => {
-    axios
-      .get('/api/rules')
-      .then( (rule) => {
-        // get new rule
-        const newReg = rule.data[0].restriction;
+  // const getRules = async () => {
+  //   axios
+  //     .get('/api/rules')
+  //     .then( (rule) => {
+  //       // get new rule
+  //       const newReg = rule.data[0].restriction;
 
-        // const ruleTab = document.getElementById("rule");
-        // const ruleDiv = document.createElement("div");
-        // ruleTab.appendChild(ruleDiv);
-        // ruleDiv.innerHTML = newReg;
-        // setNewRule(newReg);
+  //       // const ruleTab = document.getElementById("rule");
+  //       // const ruleDiv = document.createElement("div");
+  //       // ruleTab.appendChild(ruleDiv);
+  //       // ruleDiv.innerHTML = newReg;
+  //       // setNewRule(newReg);
 
-        return newReg;
-      })
-      .catch( err => console.log(err));
-    }
+  //       return newReg;
+  //     })
+  //     .catch( err => console.log(err));
+  //   }
 
     useEffect(() => {
       getDatas();
-      getRules();
+      setNewRule(node.current.innerHTML);
+      //getRules();
     }, []);
 
   return (
@@ -78,7 +80,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <getRules />
+          {newRule}
         </TabPanel>
       </Tabs>
     </div>
