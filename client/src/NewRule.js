@@ -18,10 +18,8 @@ function NewRule(_, ref) {
 
                 return newRegHTML;
             })
-            .catch( err => console.log(err)); 
+            .catch( err => err); 
     };
-
-    console.log(getRule());
 
     return (
         <section ref={ref}>
