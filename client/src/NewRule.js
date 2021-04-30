@@ -20,7 +20,7 @@ function NewRule(_, ref) {
             })
             .catch( err => err); 
     };
-
+console.log(getRule());
     return (
         <section ref={ref}>
             {getRule()}
