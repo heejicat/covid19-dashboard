@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 
 function NewRule(_, ref) {
+    const [rule, setRule] = useState();
 
     const getRule = async () => {
         await axios
@@ -16,14 +17,15 @@ function NewRule(_, ref) {
                 // ruleDiv.innerHTML = newReg;
                 // setNewRule(newReg);
 
-                return newRegHTML;
+                setRule(newRegHTML);
             })
             .catch( err => err); 
     };
+
 console.log(getRule());
     return (
         <section ref={ref}>
-            {getRule()}
+            { rule }
         </section>
     )
 }
