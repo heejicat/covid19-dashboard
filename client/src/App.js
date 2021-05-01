@@ -78,7 +78,7 @@ console.log(newRegHTML);
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div dangerouslySetInnerHTML={{getRules()}}></div>;
+          <div dangerouslySetInnerHTML={getRules()}></div>;
         </TabPanel>
       </Tabs>
     </div>
