@@ -36,11 +36,14 @@ function App() {
           // get new rule
           const newRegHTML = rule.data[0].restriction;
 
+          let fixedHTMl = "";
           newRegHTML.split('\n').map( line => {
-            return ( <span>{line}<br /></span>)
-          });
 
-          setNewRule({__html: newRegHTML})
+            fixedHTMl += <span>{line}<br /></span>;
+            console.log("HTML = " + fixedHTMl);
+          });
+          console.log(fixedHTMl);
+          setNewRule({__html: fixedHTMl})
         })
         .catch( err => console.log(err));
     }
