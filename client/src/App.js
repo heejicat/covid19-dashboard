@@ -12,8 +12,8 @@ function App() {
   const [todayDate, setTodayDate] = useState();
   const [html, setNewRule] = useState();
 
-  const getDatas = async () => {
-    await axios
+  const getDatas = () => {
+    axios
       .get('/api/data')
       .then((data) => {
         
@@ -28,27 +28,28 @@ function App() {
       .catch( err => console.log(err));
   }
 
-  // const getRules = async () => {
-  //   axios
-  //     .get('/api/rules')
-  //     .then( (rule) => {
-  //       // get new rule
-  //       const newReg = rule.data[0].restriction;
+  const getRules = () => {
+    axios
+      .get('/api/rules')
+      .then( (rule) => {
+        // get new rule
+        const newRegHTML = rule.data[0].restriction;
 
-  //       // const ruleTab = document.getElementById("rule");
-  //       // const ruleDiv = document.createElement("div");
-  //       // ruleTab.appendChild(ruleDiv);
-  //       // ruleDiv.innerHTML = newReg;
-  //       // setNewRule(newReg);
+        // const ruleTab = document.getElementById("rule");
+        // const ruleDiv = document.createElement("div");
+        // ruleTab.appendChild(ruleDiv);
+        // ruleDiv.innerHTML = newReg;
+        // setNewRule(newReg);
 
-  //       return newReg;
-  //     })
-  //     .catch( err => console.log(err));
-  // }
+        return newRegHTML;
+      })
+      .catch( err => console.log(err));
+
+  }
 
   useEffect(() => {
     getDatas();
-    //getRules();
+    // getRules();
   }, []);
 
   return (
@@ -77,7 +78,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <NewRule />
+          <div dangerouslySetInnerHTML={{__html: getRules()}}></div>;
         </TabPanel>
       </Tabs>
     </div>
