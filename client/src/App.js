@@ -80,7 +80,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div>{this.getRules()}</div>
+          <div>{getRules()}</div>
         </TabPanel>
       </Tabs>
     </div>
