@@ -35,11 +35,14 @@ function App() {
         // get new rule
         const newRegHTML = rule.data[0].restriction;
 
-        const ruleTab = document.getElementById("rule");
-        const ruleDiv = document.createElement("div");
-        ruleTab.appendChild(ruleDiv);
-        ruleDiv.innerHTML = newRegHTML;
+        // const ruleTab = document.getElementById("rule");
+        // const ruleDiv = document.createElement("div");
+        // ruleTab.appendChild(ruleDiv);
+        // ruleDiv.innerHTML = newRegHTML;
         //setNewRule(newReg);
+        let result = [];
+        result.push(newRegHTML);
+        return result;
         
       })
       .catch( err => console.log(err));
@@ -77,7 +80,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          
+          <div>{this.getRules()}</div>
         </TabPanel>
       </Tabs>
     </div>
