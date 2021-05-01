@@ -40,8 +40,8 @@ function App() {
         // ruleTab.appendChild(ruleDiv);
         // ruleDiv.innerHTML = newReg;
         // setNewRule(newReg);
-
-        return newRegHTML;
+console.log(newRegHTML);
+        return {__html: newRegHTML};
       })
       .catch( err => console.log(err));
 
@@ -78,7 +78,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div dangerouslySetInnerHTML={{__html: getRules()}}></div>;
+          <div dangerouslySetInnerHTML={{getRules()}}></div>;
         </TabPanel>
       </Tabs>
     </div>
