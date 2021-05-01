@@ -3,14 +3,14 @@ import axios from 'axios';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 import 'react-web-tabs/dist/react-web-tabs.css';
 
-import NewRule from "./NewRule";
+//import NewRule from "./NewRule";
 
 function App() {
   const node = React.createRef();
 
   const [newCase, setNewCase] = useState();
   const [todayDate, setTodayDate] = useState();
-  const [html, setNewRule] = useState();
+  const [newRule, setNewRule] = useState();
 
   const getDatas = () => {
     axios
@@ -72,12 +72,12 @@ function App() {
             <div className="card left">
               <h3>Today's New Cases</h3>
               <hr />
-              <p> {newCase}</p>
+              <p>{newCase}</p>
             </div>
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div dangerouslySetInnerHTML={ {html} }></div>
+          <div dangerouslySetInnerHTML={newRule}></div>
         </TabPanel>
       </Tabs>
     </div>
