@@ -4,8 +4,7 @@ import axios from 'axios';
 export const NewRule = memo( (props) => {
     const divRef = useRef(null);
 
-    useEffect(() => {
-        function rule() {
+    function rule() {
 
             axios
                 .get('/api/rules')
@@ -19,15 +18,12 @@ export const NewRule = memo( (props) => {
                     // ruleDiv.innerHTML = newReg;
                     // setNewRule(newReg);
 
-                    return newRegHTML;
+                    return {__html: newRegHTML};
                 })
                 .catch( err => err); 
         }
 
-        this.divRef.current.innerHTML = rule();
-        
-    })
     
-    return <div ref={divRef}></div>
+    return <div dangerouslySetInnerHTML={rule()}></div>;
 
 });
