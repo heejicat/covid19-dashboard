@@ -77,7 +77,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div>{html}</div>
+          <div dangerouslySetInnerHTML={ {html} }></div>
         </TabPanel>
       </Tabs>
     </div>
