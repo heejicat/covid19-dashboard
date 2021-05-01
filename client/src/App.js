@@ -28,30 +28,27 @@ function App() {
       .catch( err => console.log(err));
   }
 
-  const getRules = () => {
-    axios
-      .get('/api/rules')
-      .then( (rule) => {
-        // get new rule
-        const newRegHTML = rule.data[0].restriction;
-
-        // const ruleTab = document.getElementById("rule");
-        // const ruleDiv = document.createElement("div");
-        // ruleTab.appendChild(ruleDiv);
-        // ruleDiv.innerHTML = newRegHTML;
-        //setNewRule(newReg);
-        let result = [];
-        result.push(newRegHTML);
-        return result;
-        
-      })
-      .catch( err => console.log(err));
-
-  }
-
   useEffect(() => {
+    const getRules = () => {
+      axios
+        .get('/api/rules')
+        .then( (rule) => {
+          // get new rule
+          const newRegHTML = rule.data[0].restriction;
+  
+          // const ruleTab = document.getElementById("rule");
+          // const ruleDiv = document.createElement("div");
+          // ruleTab.appendChild(ruleDiv);
+          // ruleDiv.innerHTML = newRegHTML;
+          //setNewRule(newReg);
+          setNewRule({__html: newRegHTML})
+        })
+        .catch( err => console.log(err));
+    }
+    
     getDatas();
     getRules();
+
   }, []);
 
   return (
@@ -80,7 +77,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div>{getRules()}</div>
+          <div>{html}</div>
         </TabPanel>
       </Tabs>
     </div>
