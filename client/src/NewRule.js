@@ -1,24 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, memo, useEffect } from "react";
 import axios from 'axios';
 
-function NewRule() {
+export const NewRule = memo( (props) => {
+    const divRef = useRef(null);
 
-    axios
-        .get('/api/rules')
-        .then( (rule) => {
-            // get new rule
-            const newRegHTML = rule.data[0].restriction;
+    useEffect(() => {
+        function rule() {
 
-            // const ruleTab = document.getElementById("rule");
-            // const ruleDiv = document.createElement("div");
-            // ruleTab.appendChild(ruleDiv);
-            // ruleDiv.innerHTML = newReg;
-            // setNewRule(newReg);
+            axios
+                .get('/api/rules')
+                .then( (rule) => {
+                    // get new rule
+                    const newRegHTML = rule.data[0].restriction;
 
-            return <div dangerouslySetInnerHTML={{ __html: newRegHTML}}></div>;
-        })
-        .catch( err => err); 
+                    // const ruleTab = document.getElementById("rule");
+                    // const ruleDiv = document.createElement("div");
+                    // ruleTab.appendChild(ruleDiv);
+                    // ruleDiv.innerHTML = newReg;
+                    // setNewRule(newReg);
 
-}
+                    return newRegHTML;
+                })
+                .catch( err => err); 
+        }
 
-export default NewRule;
+        this.divRef.current.innerHTML = rule();
+        
+    })
+    
+    return <div ref={divRef}></div>
+
+});
