@@ -35,12 +35,11 @@ function App() {
         .then( (rule) => {
           // get new rule
           const newRegHTML = rule.data[0].restriction;
-  
-          // const ruleTab = document.getElementById("rule");
-          // const ruleDiv = document.createElement("div");
-          // ruleTab.appendChild(ruleDiv);
-          // ruleDiv.innerHTML = newRegHTML;
-          //setNewRule(newReg);
+
+          newRegHTML.split('\n').map( line => {
+            return ( <span>{line}<br /></span>)
+          });
+
           setNewRule({__html: newRegHTML})
         })
         .catch( err => console.log(err));
