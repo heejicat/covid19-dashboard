@@ -11,7 +11,6 @@ function App() {
   const [newCase, setNewCase] = useState();
   const [todayDate, setTodayDate] = useState();
   const [html, setNewRule] = useState();
-  const newRule = <NewRule ref={node} />;
 
   const getDatas = async () => {
     await axios
@@ -49,7 +48,6 @@ function App() {
 
   useEffect(() => {
     getDatas();
-    setNewRule(node.current.innerHTML);
     //getRules();
   }, []);
 
@@ -79,7 +77,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          {newRule}
+          <NewRule />
         </TabPanel>
       </Tabs>
     </div>
