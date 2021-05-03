@@ -36,8 +36,8 @@ function App() {
           // get new rule
           const newRegHTML = rule.data[0].restriction;
           
-          const html = `<div style={{whiteSpace:"pre-wrap"}}>${newRegHTML}</div>`
-
+          const html = `<div style="white-space:pre-wrap">${newRegHTML}</div>`
+console.log(html);
           setNewRule({__html: html})
         })
         .catch( err => console.log(err));
