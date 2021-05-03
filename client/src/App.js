@@ -39,7 +39,7 @@ function App() {
           
           let html = "";
           newRegHTML.split('\n').map( line => {
-            html + (<span>{line}<br/></span>);
+            html += (<span>{line}<br/></span>);
             console.log(html);
           })
 
