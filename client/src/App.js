@@ -37,7 +37,7 @@ function App() {
           const newRegHTML = rule.data[0].restriction;
           
           setNewRule({__html: newRegHTML.split('\n').map( line => {
-              return <span>{line}<br /></span>;
+              <span>{line}<br /></span>;
             })
           })
         })
