@@ -37,11 +37,13 @@ function App() {
           // get new rule
           const newRegHTML = rule.data[0].restriction;
           
-          const html = `<div style="white-space:pre-wrap">${newRegHTML}</div>`
-
-          setNewRule({__html: DOMPurify.sanitize(newRegHTML.split('\n').map( line => {
+          const html = newRegHTML.split('\n').map( line => {
             return (<span>{line}<br/></span>)
-          }))})
+          })
+
+          console.log(html);
+
+          setNewRule({__html: DOMPurify.sanitize(html)})
         })
         .catch( err => console.log(err));
     }
