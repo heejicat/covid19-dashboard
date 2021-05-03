@@ -35,13 +35,11 @@ function App() {
         .then( (rule) => {
           // get new rule
           const newRegHTML = rule.data[0].restriction;
-
-          newRegHTML.split('\n').map( line => {
-
-            return <span>{line}<br /></span>;
-          });
           
-          setNewRule({__html: newRegHTML})
+          setNewRule({__html: newRegHTML.split('\n').map( line => {
+              return <span>{line}<br /></span>;
+            })
+          })
         })
         .catch( err => console.log(err));
     }
