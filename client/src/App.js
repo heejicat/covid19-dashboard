@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DOMPurify from 'dompurify';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 import 'react-web-tabs/dist/react-web-tabs.css';
 
@@ -37,8 +38,8 @@ function App() {
           const newRegHTML = rule.data[0].restriction;
           
           const html = `<div style="white-space:pre-wrap">${newRegHTML}</div>`
-console.log(html);
-          setNewRule({__html: html})
+
+          setNewRule({__html: DOMPurify.sanitize(newRegHTML)})
         })
         .catch( err => console.log(err));
     }
