@@ -37,14 +37,10 @@ function App() {
           // get new rule
           const newRegHTML = rule.data[0].restriction;
           
-          let html = "";
-          newRegHTML.split('\n').map( line => {
-            html += (<span>{line}<br/></span>);
-            console.log(html);
-          })
+          
 
 
-          setNewRule({__html: DOMPurify.sanitize(html)})
+          setNewRule({__html: DOMPurify.sanitize(newRegHTML)})
         })
         .catch( err => console.log(err));
     }
@@ -80,7 +76,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div dangerouslySetInnerHTML={newRule}></div>
+          <div style={{ whiteSpace: "pre-wrap"}} dangerouslySetInnerHTML={newRule}></div>
         </TabPanel>
       </Tabs>
     </div>
