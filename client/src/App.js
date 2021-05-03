@@ -39,7 +39,7 @@ function App() {
           
           const html = `<div style="white-space:pre-wrap">${newRegHTML}</div>`
 
-          setNewRule({__html: DOMPurify.sanitize(newRegHTML)})
+          setNewRule({__html: DOMPurify.sanitize(html)})
         })
         .catch( err => console.log(err));
     }
