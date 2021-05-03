@@ -39,7 +39,9 @@ function App() {
           
           const html = `<div style="white-space:pre-wrap">${newRegHTML}</div>`
 
-          setNewRule({__html: DOMPurify.sanitize(html)})
+          setNewRule({__html: DOMPurify.sanitize(newRegHTML.split('\n').map( line => {
+            return (<span>{line}<br/></span>)
+          }))})
         })
         .catch( err => console.log(err));
     }
