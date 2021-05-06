@@ -69,3 +69,7 @@ button , #data-tabl, .rwt_tab {
   display: flex;
   border-radius: 5px;
 }
+
+a {
+  color: white;
+}
