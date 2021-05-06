@@ -3,7 +3,6 @@ import axios from 'axios';
 import DOMPurify from 'dompurify';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 import 'react-web-tabs/dist/react-web-tabs.css';
-import { db } from '../../src/models/RuleEntry';
 
 //import NewRule from "./NewRule";
 
@@ -36,7 +35,7 @@ function App() {
         .get('/api/rules')
         .then( (rule) => {
           // get new rule
-          const newRegHTML = rule.data[0].restriction.replace(/(?:\r\n|\r|\n|\t)/g, '');
+          const newRegHTML = rule.data[0].restriction;
           
           setNewRule({__html: DOMPurify.sanitize(newRegHTML)})
         })
@@ -74,7 +73,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div style={{ whiteSpace: "pre"}} dangerouslySetInnerHTML={newRule}></div>
+          <div dangerouslySetInnerHTML={newRule}></div>
         </TabPanel>
       </Tabs>
     </div>
