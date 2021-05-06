@@ -75,7 +75,7 @@ function App() {
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
-          <div style={{ whiteSpace: "pre-wrap"}} dangerouslySetInnerHTML={newRule}></div>
+          <div style={{ whiteSpace: "pre"}} dangerouslySetInnerHTML={newRule}></div>
         </TabPanel>
       </Tabs>
     </div>
