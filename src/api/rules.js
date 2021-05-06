@@ -15,30 +15,30 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-// schedule.scheduleJob('0 17 * * *', async (req, res) => {
-//     const ruleEntry = new RuleEntry(await getInfo.getRegulation());
-//     const newUpdateDate = ruleEntry.date;
+schedule.scheduleJob('0 17 * * *', async (req, res) => {
+    const ruleEntry = new RuleEntry(await getInfo.getRegulation());
+    const newUpdateDate = ruleEntry.date;
     
-//     if(await RuleEntry.countDocuments() != 0) {
+    if(await RuleEntry.countDocuments() != 0) {
 
-//         const entry = await RuleEntry.find();
-//         const DBDate = entry[0].date;
-//         const idFilter = { _id : entry[0]._id };
+        const entry = await RuleEntry.find();
+        const DBDate = entry[0].date;
+        const idFilter = { _id : entry[0]._id };
         
-//         if (newUpdateDate != DBDate) {
-//             const updateEntry =await RuleEntry.findOneAndUpdate( idFilter, ruleEntry, { 
-//                 new: true,
-//                 upsert: true
-//             });
-//         }
+        if (newUpdateDate != DBDate) {
+            const updateEntry =await RuleEntry.findOneAndUpdate( idFilter, ruleEntry, { 
+                new: true,
+                upsert: true
+            });
+        }
 
 
-//     } else {
-//         const newEntry = await ruleEntry.save();
-//     }
+    } else {
+        const newEntry = await ruleEntry.save();
+    }
     
-//     res.json();
+    res.json();
     
-// });
+});
 
 module.exports = router;
