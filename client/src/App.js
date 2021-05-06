@@ -35,9 +35,7 @@ function App() {
         .get('/api/rules')
         .then( (rule) => {
           // get new rule
-          const newRegHTML = rule.data[0].restriction;
-
-          newRegHTML.split("\n").map((line,i) => <span key={i}>{line}<br/></span>)
+          const newRegHTML = rule.data[0].restriction.replace(/(?:\r\n|\r|\n|\t)/g, '');
           
           setNewRule({__html: DOMPurify.sanitize(newRegHTML)})
         })
