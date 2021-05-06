@@ -37,7 +37,7 @@ function App() {
           // get new rule
           const newRegHTML = rule.data[0].restriction;
 
-          newRegHTML.split("\n").map((line,i) => <Fragment key={i}>{line}<br/></Fragment>)
+          newRegHTML.split("\n").map((line,i) => <span key={i}>{line}<br/></span>)
           
           setNewRule({__html: DOMPurify.sanitize(newRegHTML)})
         })
