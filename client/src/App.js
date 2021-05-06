@@ -3,6 +3,7 @@ import axios from 'axios';
 import DOMPurify from 'dompurify';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 import 'react-web-tabs/dist/react-web-tabs.css';
+import { db } from '../../src/models/RuleEntry';
 
 //import NewRule from "./NewRule";
 
@@ -81,3 +82,4 @@ function App() {
 }
 
 export default App;
+
