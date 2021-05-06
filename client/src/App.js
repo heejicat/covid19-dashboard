@@ -35,7 +35,7 @@ function App() {
         .get('/api/rules')
         .then( (rule) => {
           // get new rule
-          const newRegHTML = rule.data[0].restriction.replace(/(?:\r\n|\r|\n)/g, '');
+          const newRegHTML = rule.data[0].restriction.replace(/(?:\n\t|\n|\t)/g, '');
           console.log(newRegHTML);
           setNewRule({__html: DOMPurify.sanitize(newRegHTML)})
         })
