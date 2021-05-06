@@ -36,8 +36,8 @@ function App() {
         .then( (rule) => {
           // get new rule
           let newRegHTML = rule.data[0].restriction;
-          newRegHTML = newRegHTML.replace(/(?:\\n)/g, '<br />');
-          newRegHTML = newRegHTML.replace(/(?:\\r\\n|\\r|\\t|\n)/g, '');
+          newRegHTML = newRegHTML.replace(/(?:\n)/g, '<br />');
+          newRegHTML = newRegHTML.replace(/(?:\\r\\n|\\r|\\t|\\n)/g, '');
                     console.log(newRegHTML);
           setNewRule({__html: DOMPurify.sanitize(newRegHTML)})
         })
