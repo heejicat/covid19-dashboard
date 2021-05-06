@@ -4,10 +4,9 @@ import DOMPurify from 'dompurify';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 import 'react-web-tabs/dist/react-web-tabs.css';
 
-//import NewRule from "./NewRule";
+import NivoLine from './component/NivoLine';
 
 function App() {
-  const node = React.createRef();
 
   const [newCase, setNewCase] = useState();
   const [todayDate, setTodayDate] = useState();
@@ -72,6 +71,7 @@ function App() {
               <hr />
               <p>{newCase}</p>
             </div>
+            <NivoLine />
           </div>
         </TabPanel>
         <TabPanel tabId="rule">
