@@ -17,9 +17,9 @@ function NivoLine() {
             let result = data.map(({ date:x, new_cases:y}) => {
             
                 const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-                const date = new Date(x).toLocaleDateString("en-US", dateFormat);    
+                const x = new Date(x).toLocaleDateString("en-US", dateFormat);    
 
-                return ({date, y})
+                return ({x:date, y})
             });
             
 
