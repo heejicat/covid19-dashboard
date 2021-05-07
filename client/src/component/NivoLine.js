@@ -55,17 +55,20 @@ function NivoLine() {
                 yFormat=" >-.2f"
                 axisTop={null}
                 axisRight={null}
-                axisBottom={null}
+                axisBottom={{
+                    orient: 'bottom',
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: -38,
+                    legend: 'transportation',
+                    legendOffset: 36,
+                    legendPosition: 'middle'
+                }}
                 axisLeft={{
                     orient: 'left',
                     tickSize: 5,
                     tickPadding: 5,
                     tickRotation: 0,
-                }}
-                theme={{
-                    tooltip: {
-                        container: { color: 'black'}
-                    }
                 }}
                 colors={{ scheme: 'blues' }}
                 enableGridX={false}
