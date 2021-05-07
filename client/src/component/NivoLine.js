@@ -15,14 +15,13 @@ function NivoLine() {
             let data = await covidData();
             
             let result = data.map(({ date:x, new_cases:y}) => {
-
+            
                 const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-                const date = new Date(x).toLocaleDateString("en-US", dateFormat);
+                const date = new Date(x).toLocaleDateString("en-US", dateFormat);    
 
-                ({date, y})
+                return ({data, y})
             });
-
-            console.log(result);
+            
             
             let line = [({
                 "id" : "New Cases",
