@@ -26,8 +26,6 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -37,13 +35,15 @@ var allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.get('/', (req, res) => {
     // res.json({
-    //     message: 'Hello World!',
-    // });
-    console.log(__dirname);
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+        //     message: 'Hello World!',
+        // });
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+
 
 app.use('/api/data', data);
 app.use('/api/rules', rules);
