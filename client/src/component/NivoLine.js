@@ -62,6 +62,9 @@ function NivoLine() {
                     tickPadding: 5,
                     tickRotation: 0,
                 }}
+                tooltip={
+                    {container: {color: 'black'}}
+                }
                 colors={{ scheme: 'blues' }}
                 enableGridX={false}
                 enablePoints={false}
