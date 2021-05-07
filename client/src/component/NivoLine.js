@@ -19,9 +19,10 @@ function NivoLine() {
                 const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
                 const date = new Date(x).toLocaleDateString("en-US", dateFormat);    
 
-                return ({data, y})
+                return ({date, y})
             });
             
+
             
             let line = [({
                 "id" : "New Cases",
