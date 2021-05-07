@@ -53,6 +53,7 @@ function App() {
       <header className="App-header">
         <p id="staySafe">STAY SAFE</p>
         <p id="subTitle">Covid-19 Daily New Cases and Lastest Regulation for British Colombia</p>
+        <p>Vaccinated number's in process</p>
       </header>
       <Tabs defaultTab="data" onChange={(tabId) => { console.log(tabId) }}>
         <TabList>
@@ -72,6 +73,7 @@ function App() {
               <p>{newCase}</p>
             </div>
           </div>
+          <br />
           <NivoLine />
         </TabPanel>
         <TabPanel tabId="rule">

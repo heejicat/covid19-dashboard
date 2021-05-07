@@ -55,12 +55,7 @@ function NivoLine() {
                 yFormat=" >-.2f"
                 axisTop={null}
                 axisRight={null}
-                axisBottom={{
-                    orient: 'bottom',
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: 0,
-                }}
+                axisBottom={null}
                 axisLeft={{
                     orient: 'left',
                     tickSize: 5,
@@ -68,6 +63,8 @@ function NivoLine() {
                     tickRotation: 0,
                 }}
                 colors={{ scheme: 'blues' }}
+                enableGridX={false}
+                enablePoints={false}
                 pointSize={10}
                 pointColor={{ from: 'color' }}
                 pointBorderWidth={0}
