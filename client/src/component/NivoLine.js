@@ -7,7 +7,7 @@ import { covidData } from '../API';
 // otherwise height will be 0 and no chart will be rendered.
 // website examples showcase many properties, you'll often use just a few of them.
 
-function NivoLine(newCase) {
+function NivoLine() {
     const [lineData, setLineData] = useState();
 
     useEffect(() => {
