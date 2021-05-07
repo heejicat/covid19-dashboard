@@ -15,7 +15,6 @@ function NivoLine() {
             let data = await covidData();
             
             let result = data.map(({ date:x, new_cases:y}) => ({x, y}));
-            console.log(result);
             
             let line = [({
                 "id" : "New Cases",
@@ -48,7 +47,7 @@ function NivoLine() {
     return (
         <div id="graph">
             <ResponsiveLine
-                data={lineData}
+                data={exlineData}
                 margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
                 xScale={{ type: 'point' }}
                 xFormat=" =-"
