@@ -71,8 +71,8 @@ function App() {
               <hr />
               <p>{newCase}</p>
             </div>
-            <NivoLine />
           </div>
+          <NivoLine />
         </TabPanel>
         <TabPanel tabId="rule">
           <div dangerouslySetInnerHTML={newRule}></div>

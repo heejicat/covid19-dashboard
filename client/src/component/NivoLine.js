@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { ResponsiveLine } from "@nivo/line";
 
 import { covidData } from '../API';
@@ -8,7 +8,7 @@ import { covidData } from '../API';
 // website examples showcase many properties, you'll often use just a few of them.
 
 function NivoLine() {
-    const [lineData, setLineData] = useState();
+    const [lineData, setLineData] = useState([]);
 
     useEffect(() => {
         async function fetchMyAPI() {
@@ -47,7 +47,7 @@ function NivoLine() {
     return (
         <div id="graph">
             <ResponsiveLine
-                data={exlineData}
+                data={lineData}
                 margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
                 xScale={{ type: 'point' }}
                 xFormat=" =-"
