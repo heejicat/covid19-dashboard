@@ -13,7 +13,8 @@ function NivoLine() {
     useEffect(() => {
         async function fetchMyAPI() {
             let data = await covidData();
-            console.log(covidData);
+            
+            console.log(data);
             
             let result = data.map(({ date:x, new_cases:y}) => ({x, y}));
             
