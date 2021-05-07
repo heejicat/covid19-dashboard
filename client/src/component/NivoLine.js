@@ -18,7 +18,7 @@ function NivoLine() {
             
             let line = [({
                 "id" : "New Cases",
-                "color" : "hsl(279, 70%, 50%)",
+                "color" : "hsl(133, 70%, 50%)",
                 "data" : result
             })];
             
@@ -69,6 +69,11 @@ function NivoLine() {
                     tickSize: 5,
                     tickPadding: 5,
                     tickRotation: 0,
+                }}
+                theme={{
+                    tooltip: {
+                        container: { color: 'black' }
+                    }
                 }}
                 colors={{ scheme: 'blues' }}
                 enableGridX={false}
