@@ -18,7 +18,7 @@ function NivoLine() {
             
                 // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
                 // const date = new Date(x).toLocaleDateString("en-US", dateFormat);    
-                const date = x.split('T');  
+                const date = x.split('T')[0];  
 
                 return ({x:date, y})
             });
