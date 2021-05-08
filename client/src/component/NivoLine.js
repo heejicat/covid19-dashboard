@@ -41,7 +41,9 @@ function NivoLine() {
                 data={lineData}
                 margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
                 xScale={{
-                    type: 'linear'
+                    type: "time",
+                    format: "%m %d, %Y",
+                    precision: "day"
                 }}
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
                 yFormat=" >-.2f"
