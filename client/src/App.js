@@ -56,7 +56,6 @@ function App() {
       <header className="App-header">
         <p id="staySafe">STAY SAFE</p>
         <p id="subTitle">Covid-19 Daily New Cases and Lastest Regulation for British Colombia</p>
-        <p>Vaccinated number's in process</p>
       </header>
       <Tabs defaultTab="data" onChange={(tabId) => { console.log(tabId) }}>
         <TabList>
@@ -74,6 +73,11 @@ function App() {
               <h3>Today's New Cases</h3>
               <hr />
               <p>{newCase}</p>
+            </div>
+            <div className="card left">
+              <h3>Vaccinated Number</h3>
+              <hr />
+              <p>In process</p>
             </div>
           </div>
           <br />

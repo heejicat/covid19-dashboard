@@ -28,7 +28,6 @@ function NivoLine() {
                 "color" : "hsl(233, 50%, 30%)",
                 "data" : result
             })];
-            console.log(line);
             
             setLineData(line);
         };
