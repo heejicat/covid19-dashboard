@@ -48,7 +48,7 @@ function NivoLine() {
                 }}
                 xFormat="time:%Y-%m-%d"
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-                yFormat=" >-.2f"
+                //yFormat=" >-.2f"
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
