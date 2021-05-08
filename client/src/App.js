@@ -21,13 +21,11 @@ function App() {
         // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
         // const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
         const date = new Date(data.data[0].date);
-        
-        const today = date.setDate(new Date().getDate()+1).toDateString();
-
+        const today = date.setDate(new Date().getDate()+1);
         const todayCase = data.data[0].new_cases;
         
         setNewCase(todayCase);
-        setTodayDate(today);
+        setTodayDate(today.toDateString());
       })
       .catch( err => console.log(err));
   }
