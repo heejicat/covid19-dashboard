@@ -38,7 +38,7 @@ function NivoLine() {
     
     return (
         <div id="graph">
-            <ResponsiveLine onClick={(lineData) => console.log(lineData)}
+            <ResponsiveLine onClick={(lineData) => console.log("linedata= " + lineData)}
                 data={lineData}
                 margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
                 xScale={{
