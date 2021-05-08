@@ -22,7 +22,7 @@ function App() {
         const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
         const todayCase = data.data[0].new_cases;
 
-        console.log(data);
+        console.log(date);
         
         setNewCase(todayCase);
         setTodayDate(date);
@@ -48,7 +48,7 @@ function App() {
     getDatas();
     getRules();
 
-  }, []);
+  }, [todayDate]);
 
   return (
     <div className="App">
