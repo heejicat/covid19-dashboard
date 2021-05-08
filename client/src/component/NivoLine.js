@@ -22,35 +22,19 @@ function NivoLine() {
                 return ({x:date, y})
             });
             
-console.log(result);
             
             let line = [({
                 "id" : "New Cases",
                 "color" : "hsl(133, 70%, 50%)",
                 "data" : result
             })];
+            console.log(line);
             
             setLineData(line);
         };
 
         fetchMyAPI();
     }, []);
-
-
-    const exlineData = [({
-        "id" : "New Cases",
-        "color" : "hsl(279, 70%, 50%)",
-        "data" : [
-            {
-                x: "April 5, 2021",
-                y: 869
-            },
-            {
-                x: "April 6, 2021",
-                y: 1000
-            },
-        ]
-    })];
     
     return (
         <div id="graph">
