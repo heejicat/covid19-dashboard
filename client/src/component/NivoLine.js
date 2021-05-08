@@ -25,7 +25,7 @@ function NivoLine() {
             
             let line = [({
                 "id" : "New Cases",
-                "color" : "hsl(133, 70%, 50%)",
+                "color" : "hsl(233, 50%, 30%)",
                 "data" : result
             })];
             console.log(line);
@@ -59,7 +59,7 @@ function NivoLine() {
                     tickRotation: -38,
                     tickValues: 20,
                     legend: 'Date',
-                    legendOffset: 36,
+                    legendOffset: 40,
                     legendPosition: 'middle'
                 }}
                 axisLeft={{
