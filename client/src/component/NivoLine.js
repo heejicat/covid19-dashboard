@@ -16,8 +16,9 @@ function NivoLine() {
             
             let result = data.map(({ date:x, new_cases:y}) => {
             
-                const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-                const date = new Date(x).toLocaleDateString("en-US", dateFormat);    
+                // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
+                // const date = new Date(x).toLocaleDateString("en-US", dateFormat);    
+                const date = x.split('T');  
 
                 return ({x:date, y})
             });
@@ -42,18 +43,21 @@ function NivoLine() {
                 margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
                 xScale={{
                     type: "time",
-                    format: "%m %d, %Y",
+                    format: "%Y-%m-%d",
                     precision: "day"
                 }}
+                xFormat="time:%Y-%m-%d"
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
                 yFormat=" >-.2f"
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
+                    format: "%b %d",
                     orient: 'bottom',
                     tickSize: 5,
                     tickPadding: 5,
                     tickRotation: -38,
+                    tickValues: 20,
                     legend: 'Date',
                     legendOffset: 36,
                     legendPosition: 'middle'
