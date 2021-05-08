@@ -22,7 +22,7 @@ function NivoLine() {
                 return ({x:date, y})
             });
             
-
+console.log(result);
             
             let line = [({
                 "id" : "New Cases",
