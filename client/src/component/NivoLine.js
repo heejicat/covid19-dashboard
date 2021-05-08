@@ -22,7 +22,6 @@ function NivoLine() {
                 return ({x:date, y})
             });
             
-            
             let line = [({
                 "id" : "New Cases",
                 "color" : "hsl(133, 70%, 50%)",
@@ -41,7 +40,11 @@ function NivoLine() {
             <ResponsiveLine
                 data={lineData}
                 margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
-                xScale={{ type: 'point' }}
+                xScale={{
+                    type: 'time',
+                    format: "%d-%m-%Y",
+                    precision: "day"
+                }}
                 xFormat=" =-"
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
                 yFormat=" >-.2f"
