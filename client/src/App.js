@@ -20,13 +20,13 @@ function App() {
         // get new case for today
         // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
         // const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
-        const date = new Date(data.data[0].date).toDateString();
-        
+        const date = new Date(data.data[0].date);
+        const today = date.setDate(new Date().getDate()+1);
 
         const todayCase = data.data[0].new_cases;
         
         setNewCase(todayCase);
-        setTodayDate(date);
+        setTodayDate(today);
       })
       .catch( err => console.log(err));
   }
