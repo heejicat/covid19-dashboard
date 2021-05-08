@@ -28,7 +28,7 @@ function NivoLine() {
                 "color" : "hsl(233, 50%, 30%)",
                 "data" : result
             })];
-            //console.log(line);
+            console.log(line);
             
             setLineData(line);
         };
@@ -38,7 +38,7 @@ function NivoLine() {
     
     return (
         <div id="graph">
-            <ResponsiveLine onClick={(lineData) => console.log("linedata= " + lineData)}
+            <ResponsiveLine onClick={(lineData) => console.log(lineData)}
                 data={lineData}
                 margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
                 xScale={{
