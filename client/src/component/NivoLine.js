@@ -34,7 +34,7 @@ function NivoLine() {
         };
 
         fetchMyAPI();
-    }, [lineData]);
+    }, []);
     
     return (
         <div id="graph">
