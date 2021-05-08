@@ -20,7 +20,7 @@ function App() {
         // get new case for today
         // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
         // const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
-        let date = new Date(data.data[0].date).toLocaleString();
+        const date = new Date(data.data[0].date).toDateString();
         
 
         const todayCase = data.data[0].new_cases;
