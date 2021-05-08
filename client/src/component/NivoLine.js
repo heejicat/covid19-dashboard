@@ -58,9 +58,9 @@ function NivoLine() {
                     tickPadding: 5,
                     tickRotation: -38,
                     tickValues: 20,
-                    legend: 'Date',
-                    legendOffset: 40,
-                    legendPosition: 'middle'
+                    // legend: 'Date',
+                    // legendOffset: 45,
+                    // legendPosition: 'middle'
                 }}
                 axisLeft={{
                     orient: 'left',
