@@ -19,13 +19,14 @@ function NivoLine() {
                 // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
                 // const date = new Date(x).toLocaleDateString("en-US", dateFormat);    
                 const date = x.split('T')[0];  
-
+console.log(date);
                 return ({x:date, y})
             });
             
             let line = [({
                 "id" : "New Cases",
                 "color" : "hsl(233, 50%, 30%)",
+                
                 "data" : result
             })];
             
