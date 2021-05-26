@@ -8,6 +8,7 @@ const page_restriction = 'https://www2.gov.bc.ca/gov/content/covid-19/info/restr
 async function getCovidData() {
     // Request HTTP as JSON
     const { data } = await axios.get(page_case);
+
     // New cases number selector
     const newCases = data.features[0]['attributes']['value'];
 

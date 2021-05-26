@@ -8,6 +8,7 @@ const router = Router();
 
 router.get('/', async (req, res, next) => {
     try {
+        // get new cases and date data
         const entries = await DataEntry.find().sort({date:-1});
         res.json(entries);
     } catch (error) {
@@ -15,11 +16,17 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-schedule.scheduleJob('0 17 * * *', async (req, res) => {
-    const dataEntry = new DataEntry(await getInfo.getCovidData());
-    const createdEntry = await dataEntry.save();
+schedule.scheduleJob('*/2 * * * *', async (req, res) => {
+    try {
+        const dataEntry = new DataEntry(await getInfo.getCovidData());
+        // const createdEntry = await dataEntry.save();
+        console.log(dataEntry);
 
-    res.json(createdEntry);
+        res.json(createdEntry);
+    } catch (err) {
+        console.log(err);
+    }
+
 });
    
 
