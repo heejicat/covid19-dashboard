@@ -43,11 +43,11 @@ function NivoLine() {
                 margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
                 xScale={{
                     type: "time",
-                    format: "%m-%d-%Y",
+                    format: "%Y-%m-%d",
                     useUTC: false,
                     precision: "day"
                 }}
-                xFormat="time:%m-%d-%Y"
+                xFormat="time:%Y-%m-%d"
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
                 //yFormat=" >-.2f"
                 axisTop={null}
