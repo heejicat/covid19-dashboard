@@ -22,7 +22,7 @@ function NivoLine() {
 
                 return ({x:date, y})
             });
-            console.log(result);
+            
             let line = [({
                 "id" : "New Cases",
                 "color" : "hsl(233, 50%, 30%)",
@@ -42,11 +42,12 @@ function NivoLine() {
                 data={lineData}
                 margin={{ top: 50, right: 110, bottom: 50, left: 50 }}
                 xScale={{
-                    type: "time",
-                    format: "%Y-%m-%d",
+                    //type: "time",
+                    format: "%m-%d-%Y",
+                    useUTC: false,
                     precision: "day"
                 }}
-                xFormat="time:%Y-%m-%d"
+                xFormat="time:%m-%d-%Y"
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
                 //yFormat=" >-.2f"
                 axisTop={null}
