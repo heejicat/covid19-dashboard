@@ -14,19 +14,19 @@ router.get('/', async (req, res, next) => {
     } catch (error) {
         next(error);
     }
+});
 
-    schedule.scheduleJob('*/2 * * * *', async (req, res) => {
-        try {
-            const dataEntry = new DataEntry(await getInfo.getCovidData());
-            // const createdEntry = await dataEntry.save();
-            console.log(dataEntry);
-    
-            res.json(createdEntry);
-        } catch (err) {
-            console.log(err);
-        }
-    
-    });
+schedule.scheduleJob('56 20 * * *', async (req, res) => {
+    try {
+        const dataEntry = new DataEntry(await getInfo.getCovidData());
+        // const createdEntry = await dataEntry.save();
+        console.log(dataEntry);
+
+        res.json(createdEntry);
+    } catch (err) {
+        console.log(err);
+    }
+
 });
 
 
