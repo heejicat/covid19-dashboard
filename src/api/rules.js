@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const schedule = require('node-schedule');
+const CronJob = require('cron').CronJob;
 
 const RuleEntry = require('../models/RuleEntry');
 const getInfo = require('./getInfo');
@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-schedule.scheduleJob('0 17 * * *', async (req, res) => {
+var job = new CronJob('0 17 * * *', async (req, res) => {
     const ruleEntry = new RuleEntry(await getInfo.getRegulation());
     const newUpdateDate = ruleEntry.date;
     
@@ -26,7 +26,7 @@ schedule.scheduleJob('0 17 * * *', async (req, res) => {
         const idFilter = { _id : entry[0]._id };
         
         if (newUpdateDate != DBDate) {
-            const updateEntry =await RuleEntry.findOneAndUpdate( idFilter, ruleEntry, { 
+            const updateEntry = await RuleEntry.findOneAndUpdate( idFilter, ruleEntry, { 
                 new: true,
                 upsert: true
             });
@@ -39,6 +39,8 @@ schedule.scheduleJob('0 17 * * *', async (req, res) => {
     
     res.json();
     
-});
+}, null, true, 'America/Los_Angeles');
+
+job.start();
 
 module.exports = router;
