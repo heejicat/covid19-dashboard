@@ -18,9 +18,9 @@ function App() {
       .then((data) => {
         
         // get new case for today
-        // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-        // const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
-        const date = new Date(data.data[0].date);
+        const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(data.data[0].date).toLocaleDateString("en-US", dateFormat);
+        // const date = new Date(data.data[0].date);
         // const today = new Date(date);
         // today.setDate(date.getDate());
         const todayCase = data.data[0].new_cases;
