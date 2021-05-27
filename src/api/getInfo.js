@@ -10,9 +10,9 @@ async function getCovidData() {
     const { data } = await axios.get(page_case);
     const $ = cheerio.load(data);
 
-    const date = $('body > div > div > div > div.flex-fluid.flex-horizontal.position-relative.overflow-hidden > div > div > div > margin-container > full-container > div:nth-child(36) > margin-container > full-container > div > div.widget-body.flex-fluid.full-width.flex-vertical.justify-content-center.overflow-hidden > div > div > svg > g.responsive-text-label > text')
+    //const date = $('body > div > div > div > div.flex-fluid.flex-horizontal.position-relative.overflow-hidden > div > div > div > margin-container > full-container > div:nth-child(36) > margin-container > full-container > div > div.widget-body.flex-fluid.full-width.flex-vertical.justify-content-center.overflow-hidden > div > div > svg > g.responsive-text-label > text')
 
-    console.log(date);
+    console.log($);
     // New cases number selector
     const newCases = data.features[0]['attributes']['value'];
 
