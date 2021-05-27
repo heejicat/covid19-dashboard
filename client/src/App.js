@@ -26,7 +26,7 @@ function App() {
         const todayCase = data.data[0].new_cases;
         
         setNewCase(todayCase);
-        setTodayDate(date.toDateString());
+        setTodayDate(date);
       })
       .catch( err => console.log(err));
   }
