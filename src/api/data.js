@@ -22,8 +22,6 @@ var job = new CronJob('30 21 * * *', async (req, res) => {
         const dataEntry = new DataEntry(await getInfo.getCovidData());
             // const createdEntry = await dataEntry.save();
         console.log(dataEntry);
-
-        res.json(dataEntry);
     } catch (err) {
         console.log(err);
     }
