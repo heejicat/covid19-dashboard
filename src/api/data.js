@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const schedule = require('node-schedule');
+const CronJob = require('cron').CronJob;
 
 const DataEntry = require('../models/DataEntry');
 const getInfo = require('./getInfo');
@@ -16,20 +16,20 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-schedule.scheduleJob('8 21 * * *', async (req, res) => {
+var job = new CronJob('25 21 * * *', async (req, res) => {
+    
     try {
         const dataEntry = new DataEntry(await getInfo.getCovidData());
-        // const createdEntry = await dataEntry.save();
+            // const createdEntry = await dataEntry.save();
         console.log(dataEntry);
 
-        res.json(createdEntry);
+        res.json(dataEntry);
     } catch (err) {
         console.log(err);
     }
 
-});
+}, null, true, 'America/Los_Angeles');
 
-
-   
+job.start();
 
 module.exports = router;
