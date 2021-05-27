@@ -8,16 +8,14 @@ const page_restriction = 'https://www2.gov.bc.ca/gov/content/covid-19/info/restr
 async function getCovidData() {
     // Request HTTP as JSON
     const { data } = await axios.get(page_case);
-    const $ = cheerio.load(data);
 
-    //const date = $('body > div > div > div > div.flex-fluid.flex-horizontal.position-relative.overflow-hidden > div > div > div > margin-container > full-container > div:nth-child(36) > margin-container > full-container > div > div.widget-body.flex-fluid.full-width.flex-vertical.justify-content-center.overflow-hidden > div > div > svg > g.responsive-text-label > text')
-    console.log($);
     // New cases number selector
     const newCases = data.features[0]['attributes']['value'];
-
+    // console.log(newCases);
+    
     const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
     const today = new Date();
-
+    
     // Save new cases number and date
     const covidData = {
         new_cases: newCases,
@@ -37,8 +35,7 @@ async function getRegulation() {
     const restriction = $("#body").html();
 
     // html last updated date selector
-    const dateSelector = $("#body > p:nth-child(1) > strong")[0].children[0].data;
-    const updatedDate = dateSelector.substring(0, dateSelector.indexOf(","))
+    const dateSelector = $("#body > p:nth-child(2) > strong")[0].children[0].data;
 
     // Save html and last updated date
     const regulation = {

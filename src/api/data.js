@@ -16,12 +16,10 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-var job = new CronJob('31 22 * * *', async (req, res) => {
-    
+var job = new CronJob('0 17 * * *', async (req, res) => {
     try {
         const dataEntry = new DataEntry(await getInfo.getCovidData());
-            // const createdEntry = await dataEntry.save();
-        console.log(dataEntry);
+        const createdEntry = await dataEntry.save();
     } catch (err) {
         console.log(err);
     }
