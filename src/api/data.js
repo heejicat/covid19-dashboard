@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-schedule.scheduleJob('0 21 * * *', async (req, res) => {
+schedule.scheduleJob('3 21 * * *', async (req, res) => {
     try {
         const dataEntry = new DataEntry(await getInfo.getCovidData());
         // const createdEntry = await dataEntry.save();
