@@ -16,6 +16,8 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+
+// scheduing to get data and save to database at 5pm everyday
 var job = new CronJob('0 17 * * *', async (req, res) => {
     try {
         const dataEntry = new DataEntry(await getInfo.getCovidData());

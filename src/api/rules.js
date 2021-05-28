@@ -15,6 +15,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+// scheduing to get data and update to database at 5pm everyday
 var job = new CronJob('0 17 * * *', async (req, res) => {
     const ruleEntry = new RuleEntry(await getInfo.getRegulation());
     const newUpdateDate = ruleEntry.date;

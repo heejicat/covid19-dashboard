@@ -3,10 +3,6 @@ import { ResponsiveLine } from "@nivo/line";
 
 import { covidData } from '../API';
 
-// make sure parent container have a defined height when using responsive component,
-// otherwise height will be 0 and no chart will be rendered.
-// website examples showcase many properties, you'll often use just a few of them.
-
 function NivoLine() {
     const [lineData, setLineData] = useState([]);
 
@@ -14,19 +10,17 @@ function NivoLine() {
         async function fetchMyAPI() {
             let data = await covidData();
             
+            // to get new cases and date by destructuring
             let result = data.map(({ date:x, new_cases:y}) => {
-            
-                // const dateFormat = {year: 'numeric', month: 'long', day: 'numeric' };
-                // const date = new Date(x).toLocaleDateString("en-US", dateFormat);    
                 const date = x.split('T')[0];  
 
                 return ({x:date, y})
             });
             
+            // data into graph
             let line = [({
                 "id" : "New Cases",
                 "color" : "hsl(233, 50%, 30%)",
-                
                 "data" : result
             })];
             
@@ -49,7 +43,6 @@ function NivoLine() {
                 }}
                 xFormat="time:%Y-%m-%d"
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-                //yFormat=" >-.2f"
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
@@ -59,9 +52,6 @@ function NivoLine() {
                     tickPadding: 5,
                     tickRotation: -38,
                     tickValues: 20,
-                    // legend: 'Date',
-                    // legendOffset: 45,
-                    // legendPosition: 'middle'
                 }}
                 axisLeft={{
                     orient: 'left',
